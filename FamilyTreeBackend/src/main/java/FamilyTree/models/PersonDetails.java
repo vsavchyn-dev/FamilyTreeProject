@@ -1,6 +1,9 @@
 package FamilyTree.models;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 
 import java.util.Date;
 
@@ -8,45 +11,41 @@ import java.util.Date;
 public class PersonDetails {
 
     // --- Class Variables --- //
+    @OneToMany
+    @Column(unique = true, nullable = false)
     Integer Pid;
-    String Fname;
-    String Lname;
+
+    String firstName;
+    String lastName;
     Integer age;
     Date birthday;
     boolean alive;
 
 
     // --- Default Constructor --- //
-    PersonDetails(){
-        this.Pid = 0;
-        this.Fname = "";
-        this.Lname = "";
-        this.age = 0;
-        this.birthday = null;
-        this.alive = false;
-    }
+    PersonDetails(){}
 
     // --- Overloaded Constructor --- //
-    PersonDetails(Integer pid, String fname, String lname, int age,Date birthday, boolean alive){
+    PersonDetails(Integer pid, String firstName, String lastName, int age,Date birthday, boolean alive){
         this.Pid = pid;
-        this.Fname = fname;
-        this.Lname = lname;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.age = age;
         this.birthday = birthday;
         this.alive = alive;
     }
 
     // --- Getters --- //
-    public String getFname() {
-        return Fname;
+    public String getFirstName() {
+        return firstName;
     }
 
     public Integer getPid(){
         return this.Pid;
     }
 
-    public String getLname() {
-        return Lname;
+    public String getLastName() {
+        return lastName;
     }
 
     public Integer getAge() {
@@ -67,12 +66,12 @@ public class PersonDetails {
         this.Pid = pid;
     }
 
-    public void setLname(String lname) {
-        Lname = lname;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
-    public void setFname(String fname) {
-        Fname = fname;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
     public void setAge(Integer age) {
         this.age = age;
