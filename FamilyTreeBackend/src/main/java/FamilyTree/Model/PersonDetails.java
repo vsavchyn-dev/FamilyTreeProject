@@ -1,33 +1,33 @@
 package FamilyTree.models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 
 import java.util.Date;
 
 @Entity
+@Table(name = "person_details")
 public class PersonDetails {
 
     // --- Class Variables --- //
-    @OneToMany
-    @Column(unique = true, nullable = false)
-    Integer Pid;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    String firstName;
-    String lastName;
-    Integer age;
-    Date birthday;
-    boolean alive;
+    private String firstName;
+    private String lastName;
+    private Integer age;
+
+    @Temporal(TemporalType.DATE)
+    private Date birthday;
+
+    private boolean alive;
 
 
     // --- Default Constructor --- //
-    PersonDetails(){}
+    public PersonDetails(){}
 
     // --- Overloaded Constructor --- //
-    PersonDetails(Integer pid, String firstName, String lastName, int age,Date birthday, boolean alive){
-        this.Pid = pid;
+    public PersonDetails(String firstName, String lastName, int age, Date birthday, boolean alive) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
@@ -40,8 +40,8 @@ public class PersonDetails {
         return firstName;
     }
 
-    public Integer getPid(){
-        return this.Pid;
+    public Long getId(){
+        return this.id;
     }
 
     public String getLastName() {
@@ -60,10 +60,9 @@ public class PersonDetails {
         return alive;
     }
 
-
     // --- Setters --- //
-    public void setPid(Integer pid) {
-        this.Pid = pid;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public void setLastName(String lastName) {
@@ -73,6 +72,7 @@ public class PersonDetails {
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
+
     public void setAge(Integer age) {
         this.age = age;
     }
