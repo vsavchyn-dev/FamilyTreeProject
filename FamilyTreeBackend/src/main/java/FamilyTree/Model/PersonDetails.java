@@ -1,4 +1,4 @@
-package FamilyTree.models;
+package FamilyTree.Model;
 
 import jakarta.persistence.*;
 

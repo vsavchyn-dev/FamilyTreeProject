@@ -1,6 +1,5 @@
 package FamilyTree.Model;
 
-import FamilyTree.models.PersonDetails;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -16,14 +15,14 @@ public class Person {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "details_id", referencedColumnName = "id")
-    private FamilyTree.models.PersonDetails details;
+    private PersonDetails details;
 
     @ManyToMany(cascade = CascadeType.MERGE)
     private List<Person> childrenArray = new ArrayList<>();
 
     public Person() {};
 
-    public Person(FamilyTree.models.PersonDetails personDetails, ArrayList<Person> childrenArray) {
+    public Person(PersonDetails personDetails, ArrayList<Person> childrenArray) {
         this.details = personDetails;
         this.childrenArray = childrenArray;
     }
