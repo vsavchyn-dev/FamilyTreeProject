@@ -6,4 +6,5 @@ import jakarta.persistence.Entity;
 public class PersonRelationship {
     private Long parentId;
     private Long childId;
+    private Long GrandparentId;
 }
