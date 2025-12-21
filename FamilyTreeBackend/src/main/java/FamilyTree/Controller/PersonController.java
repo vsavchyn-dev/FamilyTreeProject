@@ -5,6 +5,7 @@ import java.util.List;
 
 import FamilyTree.Model.Person;
 import FamilyTree.Repositories.PersonRepository;
+import FamilyTree.Services.PersonNotFoundException;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,7 +34,7 @@ public class PersonController {
     @GetMapping("/person/{id}")
     Person one(@PathVariable Long id) {
         return repository.findById(id)
-                .orElseThrow(() -> new Error(id + ": not found"));
+                .orElseThrow(() -> new PersonNotFoundException(id);
     }
 
 
