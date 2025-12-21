@@ -20,6 +20,8 @@ public class Person {
     @ManyToMany(cascade = CascadeType.MERGE)
     private List<Person> childrenArray = new ArrayList<>();
 
+    private String name;
+
     public Person() {};
 
     public Person(PersonDetails personDetails, ArrayList<Person> childrenArray) {
@@ -50,6 +52,7 @@ public class Person {
     public void setDetails(PersonDetails details) {
         this.details = details;
     }
+
 
     @Override
     public int hashCode() {
